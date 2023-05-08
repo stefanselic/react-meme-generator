@@ -1,7 +1,6 @@
-import styles from './App.css';
+import './App.css';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
-import Example from './components/Select.js';
 const baseUrl =
   'https://api.memegen.link/images/buzz/top/bottom.png?token=wxgjeu3jll4dt9q6fihy&amp;width=800&amp;frames=50';
 

@@ -9,7 +9,6 @@
     "@upleveled/react-scripts": "5.0.5",
     "file-saver": "^2.0.5",
     "react": "^18.2.0",
-    "react-component-export-image": "^1.0.6",
     "react-dom": "^18.2.0",
     "react-multi-select-component": "^4.3.4"
   },
@@ -42,7 +41,7 @@
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.3",
     "@types/testing-library__jest-dom": "^5.14.5",
-    "eslint-config-upleveled": "^4.1.9",
+    "eslint-config-upleveled": "^4.2.2",
     "stylelint": "^15.6.1",
     "stylelint-config-upleveled": "^1.0.2",
     "typescript": "^5.0.4"
