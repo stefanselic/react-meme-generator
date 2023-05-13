@@ -15,9 +15,9 @@ export default function App() {
 
   // In this variable the base URL is updated at three positions based on the user's meme and text choice and outputs a new unique url
   const modifiedUrl = `https://api.memegen.link/images/${
-    memeTemplate === '' ? 'doge' : memeTemplate
-  }/${topText === '' ? 'doge' : topText}/${
-    bottomText === '' ? 'doge' : bottomText
+    memeTemplate === '' ? 'buzz' : memeTemplate
+  }/${topText === '' ? 'top' : topText}/${
+    bottomText === '' ? 'bottom' : bottomText
   }.png?token=wxgjeu3jll4dt9q6fihy&amp;width=800&amp;frames=50`;
 
   // This function expression prevents the event to do his event that is set by default and sets a new event
