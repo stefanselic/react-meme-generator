@@ -1,3 +1,7 @@
+# Project Explanation
+
+The react-meme-generator functionality is written in a single js.file since its a small application and in my opinion there is no need to create components
+
 # TODO's
 
 Create a web app with React that allows for users to generate and download memes using the https://memegen.link/ website.
@@ -18,7 +22,7 @@ It should allow the user to:
     2. Clear any existing value (eg. with a text box)
     3. Type the text `doge`
     4. Hit enter
-- [ ] Download the meme by clicking on a button
+- [x] Download the meme by clicking on a button
   - [x] The button element needs to contain the text `Download`
 
 # Getting Started with Create React App

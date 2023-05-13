@@ -26,9 +26,9 @@
     "@testing-library/user-event": "^13.2.1",
     "@upleveled/react-scripts": "5.0.5",
     "file-saver": "^2.0.5",
+    "puppeteer": "^20.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-multi-select-component": "^4.3.4"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",

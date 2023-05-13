@@ -1,65 +1,72 @@
 import './App.css';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
+
+// Path to baseURL
 const baseUrl =
   'https://api.memegen.link/images/buzz/top/bottom.png?token=wxgjeu3jll4dt9q6fihy&amp;width=800&amp;frames=50';
 
 export default function App() {
   // These state variables will be used to store the text input by the user for the top and bottom of the meme and the selected template for the meme.
-  const [topInputText, setTopInputText] = useState('');
-  const [bottomInputText, setBottomInputText] = useState('');
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
   const [memeTemplate, setMemeTemplate] = useState('');
   const [src, setSrc] = useState(baseUrl);
 
+  // In this variable the base URL is updated at three positions based on the user's meme and text choice and outputs a new unique url
   const modifiedUrl = `https://api.memegen.link/images/${
     memeTemplate === '' ? 'doge' : memeTemplate
-  }/${topInputText === '' ? 'doge' : topInputText}/${
-    bottomInputText === '' ? 'doge' : bottomInputText
+  }/${topText === '' ? 'doge' : topText}/${
+    bottomText === '' ? 'doge' : bottomText
   }.png?token=wxgjeu3jll4dt9q6fihy&amp;width=800&amp;frames=50`;
-  console.log(modifiedUrl);
 
-  // Prevents the event to do whatever it is doing and now we can modify our src code with template literals
+  // This function expression prevents the event to do his event that is set by default and sets a new event
   const handleDownload = (event) => {
     event.preventDefault();
     setSrc(modifiedUrl);
     saveAs(modifiedUrl);
-    // if (handleDownload) {
-    //   return handleDownload;
-    // } else {
-    //   prompt('No valid Input');
-    // }
   };
 
   return (
     <div className="container">
       <div className="App">
         <form>
-          <div>
-            <label htmlFor="Top-text">Top text</label>
+          <label>
+            Top text
             <input
-              value={topInputText}
-              onChange={(event) => setTopInputText(event.currentTarget.value)}
+              value={topText}
+              onChange={(event) => setTopText(event.currentTarget.value)}
             />
-          </div>
-          <div>
-            {/* <Example /> */}
-            <label htmlFor="Meme-template">Meme template</label>
+          </label>
+          <label>
+            Meme template
             <input
               value={memeTemplate}
               onChange={(event) => setMemeTemplate(event.currentTarget.value)}
             />
-          </div>
+          </label>
+          <label htmlFor="templateSelector">Select template</label>
+          <select
+            value={memeTemplate}
+            onChange={(event) => setMemeTemplate(event.currentTarget.value)}
+          >
+            <option value="aag">Aag</option>
+            <option value="ants">Ants</option>
+            <option value="bender">Bender</option>
+            <option value="blb">Blb</option>
+            <option value="boat">Boat</option>
+            <option value="country">Country</option>
+            <option value="doge">Doge</option>
+            <option value="fry">Fry</option>
+          </select>
           <img data-test-id="meme-image" src={src} alt="Generated Meme" />
-          <div>
-            <label htmlFor="Bottom-text">Bottom text</label>
+          <label>
+            Bottom text
             <input
-              value={bottomInputText}
-              onChange={(event) =>
-                setBottomInputText(event.currentTarget.value)
-              }
+              value={bottomText}
+              onChange={(event) => setBottomText(event.currentTarget.value)}
             />
-          </div>
-          {/* <MyComponent /> */}
+          </label>
           <button onClick={handleDownload}>Download</button>
         </form>
       </div>
