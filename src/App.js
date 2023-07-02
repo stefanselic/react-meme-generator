@@ -21,10 +21,17 @@ export default function App() {
   }.png?token=wxgjeu3jll4dt9q6fihy&amp;width=800&amp;frames=50`;
 
   // This function expression prevents the event to do his event that is set by default and sets a new event
-  const handleDownload = (event) => {
+  const handleDownload = async (event) => {
     event.preventDefault();
     setSrc(modifiedUrl);
-    saveAs(modifiedUrl);
+
+    try {
+      const response = await fetch(modifiedUrl);
+      const blob = await response.blob();
+      saveAs(blob);
+    } catch (error) {
+      console.error('Error appeared while downloading the image:', error);
+    }
   };
 
   return (
