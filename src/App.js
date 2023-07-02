@@ -2,42 +2,31 @@ import './App.css';
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
 
-// Path to baseURL
-const baseUrl =
-  'https://api.memegen.link/images/buzz/top/bottom.png?token=wxgjeu3jll4dt9q6fihy&amp;width=800&amp;frames=50';
+// Base URL
+const baseUrl = 'https://api.memegen.link/images/';
 
 export default function App() {
-  // These state variables will be used to store the text input by the user for the top and bottom of the meme and the selected template for the meme.
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [memeTemplate, setMemeTemplate] = useState('');
-  const [src, setSrc] = useState(baseUrl);
+  const [memeTemplate, setMemeTemplate] = useState('buzz');
 
-  // In this variable the base URL is updated at three positions based on the user's meme and text choice and outputs a new unique url
-  const modifiedUrl = `https://api.memegen.link/images/${
-    memeTemplate === '' ? 'buzz' : memeTemplate
-  }/${encodeURIComponent(
-    topText === '' ? 'top' : topText,
-  )}/${encodeURIComponent(
-    bottomText === '' ? 'bottom' : bottomText,
-  )}.png?token=wxgjeu3jll4dt9q6fihy&width=800&frames=50`;
-
-  // This function expression prevents the event to do his event that is set by default and sets a new event
   const handleDownload = async (event) => {
     event.preventDefault();
-    setSrc(modifiedUrl);
+
+    const memeUrl = `${baseUrl}${memeTemplate}/${encodeURIComponent(
+      topText,
+    )}/${encodeURIComponent(bottomText)}.png`;
 
     try {
-      const response = await fetch(modifiedUrl);
+      const response = await fetch(memeUrl);
       const blob = await response.blob();
       saveAs(blob);
     } catch (error) {
-      console.error('Error appeared while downloading the image:', error);
+      console.error('Error occurred while downloading the image:', error);
     }
   };
 
-  const isFormIncomplete =
-    topText === '' || memeTemplate === '' || bottomText === '';
+  const isFormIncomplete = topText === '' || bottomText === '';
 
   return (
     <div className="container">
@@ -62,6 +51,7 @@ export default function App() {
             value={memeTemplate}
             onChange={(event) => setMemeTemplate(event.currentTarget.value)}
           >
+            <option value="buzz">Buzz</option>
             <option value="aag">Aag</option>
             <option value="ants">Ants</option>
             <option value="bender">Bender</option>
@@ -71,7 +61,13 @@ export default function App() {
             <option value="doge">Doge</option>
             <option value="fry">Fry</option>
           </select>
-          <img data-test-id="meme-image" src={src} alt="Generated Meme" />
+          <img
+            data-test-id="meme-image"
+            src={`${baseUrl}${memeTemplate}/${encodeURIComponent(
+              topText,
+            )}/${encodeURIComponent(bottomText)}.png`}
+            alt="Generated Meme"
+          />
           <label>
             Bottom text
             <input
