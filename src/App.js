@@ -36,6 +36,9 @@ export default function App() {
     }
   };
 
+  const isFormIncomplete =
+    topText === '' || memeTemplate === '' || bottomText === '';
+
   return (
     <div className="container">
       <div className="App">
@@ -76,7 +79,9 @@ export default function App() {
               onChange={(event) => setBottomText(event.currentTarget.value)}
             />
           </label>
-          <button onClick={handleDownload}>Download</button>
+          <button disabled={isFormIncomplete} onClick={handleDownload}>
+            Download
+          </button>
         </form>
       </div>
     </div>
