@@ -1,4 +1,4 @@
-REACT MEME GENERATOR
+<h1>REACT MEME GENERATOR</h1>
 
 ![Bildschirmfoto 2024-02-22 um 09 56 55](https://github.com/stefanselic/react-meme-generator/assets/129748801/57b1b678-f3de-466a-ac7a-83b06d25c93b)
 
